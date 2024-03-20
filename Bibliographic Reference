@@ -1,3 +1,12 @@
+
+A practical guide to constructing and retrieving information from knowledge graphs in RAG applications with Neo4j and LangChain
+
+https://blog.langchain.dev/enhancing-rag-based-applications-accuracy-by-constructing-and-leveraging-knowledge-graphs/
+
+The blog post on LangChain discusses enhancing RAG-based application accuracy by constructing and leveraging knowledge graphs, focusing on practical guides and examples using Neo4j and LangChain. It emphasizes the benefits of combining graph databases and vector search for deeper and more contextual information retrieval. The post includes steps for setting up a Neo4j environment, data ingestion, knowledge graph construction, and implementing hybrid retrieval for RAG applications. Additionally, it demonstrates using large language models (LLMs) for automating parts of the knowledge graph creation process. For more detailed insights and examples, you can read the full post [here](https://blog.langchain.dev/enhancing-rag-based-applications-accuracy-by-constructing-and-leveraging-knowledge-graphs/).
+
+
+
 To ensure that your CSS changes are immediately reflected on the webpage shown in the browser while running a Node.js project with Nodemon, you can follow these steps. These methods force the browser to reload or fetch the latest version of your CSS without having to manually refresh the browser each time you make a change.
 
 ### 1. Use Live Reloading Tools
