@@ -1,0 +1,93 @@
+To ensure that your CSS changes are immediately reflected on the webpage shown in the browser while running a Node.js project with Nodemon, you can follow these steps. These methods force the browser to reload or fetch the latest version of your CSS without having to manually refresh the browser each time you make a change.
+
+### 1. Use Live Reloading Tools
+
+**BrowserSync**: BrowserSync can automatically reload your webpage whenever files in your project change. It can be integrated with your Node.js project and Nodemon setup. Here’s a basic way to use it:
+
+- Install BrowserSync globally via npm:
+
+  ```sh
+  npm install -g browser-sync
+  ```
+
+- Run BrowserSync to watch your files. You can specify the proxy option to your local development server (assuming your Node.js app runs on `localhost:3000`):
+
+  ```sh
+  browser-sync start --proxy "localhost:3000" --files "public/**/*"
+  ```
+
+This command tells BrowserSync to proxy your existing Node.js server and to watch for changes in the `public` directory (adjust the path as needed for your project). BrowserSync will refresh the browser automatically on changes.
+
+### 2. Use a Task Runner or Build Tool
+
+**Gulp** and **Webpack** are popular choices that can watch your files for changes and then trigger a browser refresh.
+
+- For **Gulp**, you can use plugins like `gulp-livereload` or integrate BrowserSync.
+- With **Webpack**, you can use `webpack-dev-server` which includes a live reloading feature.
+
+### 3. Append Query Strings to Your CSS Link
+
+This method involves appending a query string to the `<link>` tag for your CSS file in your HTML. This forces the browser to fetch the latest version of the CSS file because it perceives it as a different URL each time. Here's an example using a timestamp:
+
+```html
+<link rel="stylesheet" href="style.css?v=123456">
+```
+
+In a development environment, you can automate this by having your server-side code append a dynamic value (like the current timestamp) every time the page is rendered:
+
+```javascript
+const timestamp = Date.now();
+res.render('index', { timestamp });
+```
+
+And in your template:
+
+```html
+<link rel="stylesheet" href="style.css?v={{timestamp}}">
+```
+
+### 4. Enable Hot Module Replacement (HMR) If Using Webpack
+
+If your project is set up with Webpack, enabling Hot Module Replacement (HMR) can also achieve instant updates, especially for CSS. Webpack's HMR allows modules (CSS in this case) to be updated at runtime without the need for a full refresh.
+
+### 5. Manually Refresh with Nodemon
+
+If you're not using any of the above tools or setups, you can manually restart Nodemon whenever CSS changes, but this approach defeats the purpose of seeking automation and immediate feedback.
+
+### Conclusion
+
+For the most seamless development experience, integrating a live-reloading tool like BrowserSync, or utilizing a task runner/build tool setup with live reloading capabilities, is the best way to ensure your CSS updates are immediately reflected in the browser. This setup not only improves your workflow but also saves time and increases productivity.
+
+
+[Video Link: https://youtu.be/ZvwUzcMvKiI](https://youtu.be/ZvwUzcMvKiI)
+
+### Enabling Semantic Search with MongoDB Atlas
+
+#### Overview
+The tutorial provided by MongoDB showcases how to enable semantic search on user-specific data, a process that includes loading, transforming, embedding, and storing data. The Lang chain team provides utilities to simplify this process.
+
+#### Prerequisites
+- MongoDB Atlas account
+- OpenAI API key
+- Python or JavaScript with Node.js
+
+#### Steps for Semantic Search
+1. **Clone the Repository**: A GitHub repository with the necessary code is provided, from which the viewer should clone the code.
+2. **Configure API Keys**: Enter the OpenAI API key and MongoDB connection string in the provided `pam.py` file.
+3. **Install Requirements**: Set up a Python environment, activate it, and install the requirements from the `requirements.txt` file.
+4. **Data Vectorization**: Using the AT&T Wikipedia page as a data source, the tutorial explains the vectorization process: loading the data, transforming it into smaller chunks, embedding these chunks using an LLM like OpenAI's embeddings, and finally storing the vectors in MongoDB Atlas.
+5. **Performing the Search**: After setting up a vector search index in MongoDB Atlas, you can perform a search using the provided `query.py` file.
+
+#### Vector Database and MongoDB
+MongoDB Atlas is highlighted as an ideal solution for storing vector embeddings. The Lang chain MongoDB Atlas module is showcased for its ability to handle the vectorization process seamlessly.
+
+#### Querying Data
+The tutorial concludes by demonstrating how to query the vectorized data using MongoDB's Vector search. It walks through a CLI-based query tool that vectorizes the search query and retrieves the relevant data.
+
+#### Final Thoughts
+The tutorial emphasizes the simplicity of implementing semantic search with MongoDB Atlas and Lang chain. It invites the audience to try MongoDB Vector search in AI projects and to provide feedback on their experience.
+
+Would you like to explore any particular section of the video summary in more detail?
+
+
+https://www.mongodb.com/developer/videos/semantic-search-made-easy-with-langchain-and-mongodb/
